@@ -75,15 +75,16 @@ export default function TaskList() {
   const getStatusBadgeVariant = (status: string) => {
     switch (status) {
       case "pending":
-        return "secondary"
+        return "secondary";
       case "in-progress":
-        return "default"
+        return "default";
       case "completed":
-        return "success"
+        return "outline";  // Return a valid value like "outline" for "completed"
       default:
-        return "outline"
+        return "outline";  // Return a default value
     }
-  }
+  };
+  
 
   if (loading) {
     return <div className="flex justify-center p-4">Loading tasks...</div>
