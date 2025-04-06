@@ -69,7 +69,7 @@ export default function MemberDashboard() {
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow">
         <div className="mx-auto flex max-w-7xl items-center justify-between p-4">
-          <h1 className="text-2xl font-bold text-gray-900">Member Dashboard</h1>
+          <h1 className="text-2xl font-bold text-purple-900">VerziBiz Member</h1>
           <div className="flex items-center gap-4">
             <span className="text-sm text-gray-600">{user?.email}</span>
             <Button variant="outline" size="sm" onClick={handleSignOut}>

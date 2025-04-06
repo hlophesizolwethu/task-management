@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect } from "react"
 import { doc, updateDoc, collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "@/lib/firebase"
@@ -46,7 +45,7 @@ export default function EditTaskForm({ task, onSuccess }: EditTaskFormProps) {
     assignee: task.assignee,
     status: task.status,
     progress: task.progress,
-    dueDate: new Date(task.dueDate),
+    dueDate: task.dueDate ? new Date(task.dueDate).getTime() ? new Date(task.dueDate) : null : null,
   })
 
   useEffect(() => {
@@ -188,4 +187,3 @@ export default function EditTaskForm({ task, onSuccess }: EditTaskFormProps) {
     </form>
   )
 }
-

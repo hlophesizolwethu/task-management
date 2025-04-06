@@ -123,36 +123,41 @@ export default function TaskList() {
                   </div>
                   <span className="text-xs text-gray-500">{task.progress}%</span>
                 </TableCell>
-                <TableCell>{new Date(task.dueDate).toLocaleDateString()}</TableCell>
+                <TableCell>
+                  {task.dueDate && !isNaN(new Date(task.dueDate).getTime()) 
+                    ? new Date(task.dueDate).toLocaleDateString()
+                    : "No due date"}
+                </TableCell>
                 <TableCell className="text-right">
                   <div className="flex justify-end gap-2">
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button variant="outline" size="icon" onClick={() => setEditingTask(task)}>
-                          <Pencil className="h-4 w-4" />
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent className="sm:max-w-[425px]">
-                        <DialogHeader>
-                          <DialogTitle>Edit Task</DialogTitle>
-                        </DialogHeader>
-                        {editingTask && (
-                          <EditTaskForm
-                            task={editingTask}
-                            onSuccess={() => {
-                              fetchTasks()
-                              setEditingTask(null)
-                            }}
-                          />
-                        )}
-                      </DialogContent>
-                    </Dialog>
-                    <Button variant="outline" size="icon" onClick={() => handleDeleteTask(task.id)}>
-                      <Trash2 className="h-4 w-4" />
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline" size="icon" onClick={() => setEditingTask(task)}>
+                      <Pencil className="h-4 w-4" />
                     </Button>
-                  </div>
-                </TableCell>
-              </TableRow>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                      <DialogTitle>Edit Task</DialogTitle>
+                    </DialogHeader>
+                    {editingTask && (
+                      <EditTaskForm
+                      task={editingTask}
+                      onSuccess={() => {
+                        fetchTasks()
+                        setEditingTask(null)
+                      }}
+                      />
+                    )}
+                  </DialogContent>
+                </Dialog>
+              <Button variant="outline" size="icon" onClick={() => handleDeleteTask(task.id)}>
+                <Trash2 className="h-4 w-4" />
+              </Button>
+            </div>
+           </TableCell>
+          </TableRow>
+
             ))
           )}
         </TableBody>
