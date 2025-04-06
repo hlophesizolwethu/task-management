@@ -28,7 +28,7 @@ interface Task {
   assignee: string
   status: string
   progress: number
-  dueDate: string
+  dueDate: string | null
 }
 
 interface EditTaskFormProps {
@@ -39,13 +39,15 @@ interface EditTaskFormProps {
 export default function EditTaskForm({ task, onSuccess }: EditTaskFormProps) {
   const [users, setUsers] = useState<User[]>([])
   const [loading, setLoading] = useState(false)
+  
+  // Correct the type of dueDate to Date | undefined (not Date | null)
   const [formData, setFormData] = useState({
     title: task.title,
     description: task.description,
     assignee: task.assignee,
     status: task.status,
     progress: task.progress,
-    dueDate: task.dueDate ? new Date(task.dueDate).getTime() ? new Date(task.dueDate) : null : null,
+    dueDate: task.dueDate ? new Date(task.dueDate) : undefined, // Default to undefined if null
   })
 
   useEffect(() => {
