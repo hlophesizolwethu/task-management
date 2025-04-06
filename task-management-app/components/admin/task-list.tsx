@@ -19,7 +19,7 @@ interface Task {
   status: "pending" | "in-progress" | "completed"
   progress: number
   dueDate: string
-  createdAt: any
+  createdAt: Date
 }
 
 export default function TaskList() {

@@ -75,10 +75,12 @@ export default function LoginForm() {
       } else {
         setError("User profile not found. Please contact administrator.")
       }
-    } catch (error: any) {
-      setError(error.message || "Authentication failed")
-    } finally {
-      setLoading(false)
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message || "Authentication failed")
+      } else {
+        setError("An unknown error occurred")
+      }
     }
   }
 

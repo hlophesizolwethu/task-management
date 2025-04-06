@@ -6,7 +6,7 @@ import { createContext, useContext, useEffect, useState } from "react"
 import { onAuthStateChanged, type User } from "firebase/auth"
 import { doc, getDoc } from "firebase/firestore"
 import { auth, db } from "@/lib/firebase"
-import { useRouter } from "next/navigation"
+//import { useRouter } from "next/navigation"
 
 type UserRole = "admin" | "member" | null
 
@@ -28,7 +28,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [userRole, setUserRole] = useState<UserRole>(null)
   const [loading, setLoading] = useState(true)
-  const router = useRouter()
+  //const router = useRouter()
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
