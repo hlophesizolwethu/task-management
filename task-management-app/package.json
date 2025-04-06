@@ -8,6 +8,12 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "overrides": {
+  "react-day-picker": {
+    "date-fns": "^3.0.0"
+  }
+}
+,
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-label": "^2.1.2",
@@ -39,4 +45,5 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   }
+  
 }
