@@ -85,7 +85,7 @@ export default function MemberTaskList({ filter }: MemberTaskListProps) {
 
   useEffect(() => {
     fetchTasks()
-  }, [user, filter, fetchTasks])
+  }, [user, filter])
 
   const handleUpdateProgress = async () => {
     if (!selectedTask) return
