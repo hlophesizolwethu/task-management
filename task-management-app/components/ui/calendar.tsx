@@ -11,7 +11,10 @@ import { buttonVariants } from "@/components/ui/button"
 type CustomCalendarMonth = {
   year: number
   month: number
+  currentMonth: Date
+  onMonthChange: (month: Date) => void
 }
+type CalendarMonth = Date | CustomCalendarMonth
 
 function CustomCaption({ currentMonth, onMonthChange }: { currentMonth: Date; onMonthChange: (month: Date) => void }) {
   const previousMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1)
@@ -90,9 +93,9 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        Caption: (props: CaptionProps) => (
+        Caption: () => (
           <CustomCaption
-            currentMonth={props.currentMonth} // Use currentMonth directly
+            currentMonth={currentMonth}
             onMonthChange={setCurrentMonth}
           />
         ),
