@@ -2,19 +2,10 @@
 
 import * as React from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { DayPicker, CaptionProps, CustomComponents } from "react-day-picker"
+import { DayPicker, CustomComponents } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-
-// Define the CustomCalendarMonth type
-type CustomCalendarMonth = {
-  year: number
-  month: number
-  currentMonth: Date
-  onMonthChange: (month: Date) => void
-}
-type CalendarMonth = Date | CustomCalendarMonth
 
 function CustomCaption({ currentMonth, onMonthChange }: { currentMonth: Date; onMonthChange: (month: Date) => void }) {
   const previousMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1)
@@ -99,7 +90,7 @@ function Calendar({
             onMonthChange={setCurrentMonth}
           />
         ),
-      } as Partial<CustomComponents>} // Explicitly type the components prop
+      } as Partial<CustomComponents>}
       {...props}
     />
   )
