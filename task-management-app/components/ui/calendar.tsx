@@ -1,10 +1,44 @@
 "use client"
 
 import * as React from "react"
-import { DayPicker } from "react-day-picker"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import { DayPicker, CaptionProps, CustomComponents } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+
+// Define the CustomCalendarMonth type
+type CustomCalendarMonth = {
+  year: number
+  month: number
+}
+
+function CustomCaption({ currentMonth, onMonthChange }: { currentMonth: Date; onMonthChange: (month: Date) => void }) {
+  const previousMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1)
+  const nextMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1)
+
+  return (
+    <div className="flex items-center justify-between px-2 py-1">
+      <button
+        type="button"
+        onClick={() => onMonthChange(previousMonth)}
+        className="opacity-50 hover:opacity-100"
+      >
+        <ChevronLeft className="w-4 h-4" />
+      </button>
+      <span className="text-sm font-medium">
+        {currentMonth.toLocaleString("default", { month: "long", year: "numeric" })}
+      </span>
+      <button
+        type="button"
+        onClick={() => onMonthChange(nextMonth)}
+        className="opacity-50 hover:opacity-100"
+      >
+        <ChevronRight className="w-4 h-4" />
+      </button>
+    </div>
+  )
+}
 
 function Calendar({
   className,
@@ -55,6 +89,14 @@ function Calendar({
         day_hidden: "invisible",
         ...classNames,
       }}
+      components={{
+        Caption: (props: CaptionProps) => (
+          <CustomCaption
+            currentMonth={props.currentMonth} // Use currentMonth directly
+            onMonthChange={setCurrentMonth}
+          />
+        ),
+      } as Partial<CustomComponents>} // Explicitly type the components prop
       {...props}
     />
   )

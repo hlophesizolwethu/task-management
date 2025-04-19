@@ -133,7 +133,7 @@ export default function LoginForm() {
           </div>
         )}
 
-        <Button type="submit" className="w-full" disabled={loading}>
+        <Button type="submit" className="w-full " disabled={loading}>
           {loading ? "Processing..." : isLogin ? "Sign In" : "Sign Up"}
         </Button>
 

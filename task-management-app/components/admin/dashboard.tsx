@@ -52,7 +52,7 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow">
         <div className="mx-auto flex max-w-7xl items-center justify-between p-4">
-          <h1 className="text-2xl font-bold text-purple-900">VerziBiz Admin</h1>
+          <h1 className="text-2xl font-bold text-purple-900 hover:text-purple-600">VerziBiz Admin</h1>
           <div className="flex items-center gap-4">
             <span className="text-sm text-gray-600">{user?.email}</span>
             <Button variant="outline" size="sm" onClick={handleSignOut}>
@@ -67,7 +67,7 @@ export default function AdminDashboard() {
         <div className="grid gap-4 md:grid-cols-3">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Total Tasks</CardTitle>
+              <CardTitle className="text-sm font-bold text-purple-600 hover:text-purple-900">Total Tasks</CardTitle>
               <CheckSquare className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -76,7 +76,7 @@ export default function AdminDashboard() {
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">Team Members</CardTitle>
+              <CardTitle className="text-sm font-bold text-purple-600 hover:text-purple-900">Team Members</CardTitle>
               <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -85,11 +85,11 @@ export default function AdminDashboard() {
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium">New Task</CardTitle>
+              <CardTitle className="text-sm font-bold text-purple-600 hover:text-purple-900">New Task</CardTitle>
               <PlusCircle className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <Button className="w-full bg-purple-900 text-white hover:bg-purple-600" onClick={() => setActiveTab("create")}>
+              <Button className="w-full bg-purple-600 text-white hover:bg-purple-900" onClick={() => setActiveTab("create")}>
                 Create Task
               </Button>
             </CardContent>
